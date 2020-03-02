@@ -2,7 +2,7 @@
 
 namespace BeanDiscovery.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class Bean : Attribute
     {
         public string Name { get; set; }
