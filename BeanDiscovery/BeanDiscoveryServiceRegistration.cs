@@ -15,6 +15,16 @@ namespace BeanDiscovery
             // or another method, then the actual assembly is used, and not the 'Real calling assembly'
             var assembly = Assembly.GetCallingAssembly();
             var types = GetBeanTypes(assembly);
+            types.ToList().ForEach(t => RegisterTypeInServiceCollection(services, t));
+        }
+
+        private static void RegisterTypeInServiceCollection(IServiceCollection services, Type type)
+        {
+            var interfaces = type.GetInterfaces();
+            interfaces.ToList().ForEach(tinterface =>
+            {
+                services.AddTransient(tinterface, type);
+            });
         }
 
         private static IEnumerable<Type> GetBeanTypes(Assembly assembly)
