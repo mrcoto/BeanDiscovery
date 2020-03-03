@@ -1,3 +1,4 @@
+using BeanDiscovery;
 using BeanDiscoveryExample.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,6 +21,7 @@ namespace BeanDiscoveryExample
         public void ConfigureServices(IServiceCollection services)
         {
             // services.AddTransient<IMagicService, BookMagicService>();
+            services.UseBeanDiscovery();
             services.AddControllers();
         }
 
