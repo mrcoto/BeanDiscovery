@@ -22,7 +22,8 @@ namespace BeanDiscovery
             var types = assembly.GetTypes();
             return types.Where(t =>
             {
-                return t.GetCustomAttributes(typeof(Bean), inherit: true).Length > 0;
+                return t.GetCustomAttribute(typeof(Bean), inherit: true) != null &&
+                       t.GetTypeInfo().IsClass;
             }).AsEnumerable();
         }
 
