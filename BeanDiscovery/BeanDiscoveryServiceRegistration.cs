@@ -14,7 +14,8 @@ namespace BeanDiscovery
             // This call needs to be here, if this call is inside "GetBeanTypes"
             // or another method, then the actual assembly is used, and not the 'Real calling assembly'
             var assembly = Assembly.GetCallingAssembly();
-            var types = GetBeanTypes(assembly);
+            var beanFinder = new BeanFinder();
+            var types = beanFinder.GetBeanTypes(assembly);
             types.ToList().ForEach(t => RegisterTypeInServiceCollection(services, t));
         }
 
@@ -35,19 +36,9 @@ namespace BeanDiscovery
 
         private static ScopeType GetScopeType(Type type)
         {
-            // Attribute is already set in class (Method GetBeanTypes)
+            // Attribute is already set in class (Method BeanFinder.GetBeanTypes)
             var bean = type.GetCustomAttribute(typeof(Bean), inherit: true) as Bean;
             return bean.Scope;
-        }
-
-        private static IEnumerable<Type> GetBeanTypes(Assembly assembly)
-        {
-            var types = assembly.GetTypes();
-            return types.Where(t =>
-            {
-                return t.GetCustomAttribute(typeof(Bean), inherit: true) != null &&
-                       t.GetTypeInfo().IsClass;
-            }).AsEnumerable();
         }
 
     }
