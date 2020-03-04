@@ -20,11 +20,24 @@ namespace BeanDiscovery
 
         private static void RegisterTypeInServiceCollection(IServiceCollection services, Type type)
         {
-            var interfaces = type.GetInterfaces();
-            interfaces.ToList().ForEach(tinterface =>
+            var interfaces = type.GetInterfaces().ToList();
+            var scopeType = GetScopeType(type);
+            interfaces.ForEach(tinterface =>
             {
-                services.AddTransient(tinterface, type);
+                var result = scopeType switch
+                {
+                    ScopeType.TRANSIENT => services.AddTransient(tinterface, type),
+                    ScopeType.SCOPED => services.AddScoped(tinterface, type),
+                    _ => services.AddSingleton(tinterface, type)
+                };
             });
+        }
+
+        private static ScopeType GetScopeType(Type type)
+        {
+            // Attribute is already set in class (Method GetBeanTypes)
+            var bean = type.GetCustomAttribute(typeof(Bean), inherit: true) as Bean;
+            return bean.Scope;
         }
 
         private static IEnumerable<Type> GetBeanTypes(Assembly assembly)
