@@ -18,5 +18,7 @@ namespace BeanDiscovery
             }).AsEnumerable();
         }
 
+        // TODO Agrupar por interfaz
+
     }
 }

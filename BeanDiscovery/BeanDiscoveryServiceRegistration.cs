@@ -1,7 +1,6 @@
 ﻿using BeanDiscovery.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -14,9 +13,15 @@ namespace BeanDiscovery
             // This call needs to be here, if this call is inside "GetBeanTypes"
             // or another method, then the actual assembly is used, and not the 'Real calling assembly'
             var assembly = Assembly.GetCallingAssembly();
+            var assemblies = assembly.GetReferencedAssemblies().ToList();
+            assemblies.Add(assembly.GetName());
             var beanFinder = new BeanFinder();
-            var types = beanFinder.GetBeanTypes(assembly);
-            types.ToList().ForEach(t => RegisterTypeInServiceCollection(services, t));
+            assemblies.ForEach(assemblyName =>
+            {
+                var assembly = Assembly.Load(assemblyName);
+                var types = beanFinder.GetBeanTypes(assembly);
+                types.ToList().ForEach(t => RegisterTypeInServiceCollection(services, t));
+            });
         }
 
         private static void RegisterTypeInServiceCollection(IServiceCollection services, Type type)
