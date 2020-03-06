@@ -1,4 +1,5 @@
 using BeanDiscovery;
+using BeanDiscoveryExample.Repositories;
 using BeanDiscoveryExample.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,7 +22,10 @@ namespace BeanDiscoveryExample
         public void ConfigureServices(IServiceCollection services)
         {
             // services.AddTransient<IMagicService, BookMagicService>();
-            services.UseBeanDiscovery();
+            services.UseBeanDiscovery(options =>
+            {
+                options.UseBeanNameWithError<ILangRepository>("Spanish");
+            });
             services.AddControllers();
         }
 

@@ -1,6 +1,8 @@
-﻿using BeanDiscovery.Attributes;
+﻿using BeanDiscovery.Config;
+using BeanDiscovery.Data;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -8,42 +10,39 @@ namespace BeanDiscovery
 {
     public static class BeanDiscoveryServiceRegistration
     {
-        public static void UseBeanDiscovery(this IServiceCollection services)
+        public static void UseBeanDiscovery(this IServiceCollection services, Action<BeanOptions> options = null)
         {
+            var beanOptions = new BeanOptions();
+            services.AddSingleton(beanOptions);
+            options?.Invoke(beanOptions);
             // This call needs to be here, if this call is inside "GetBeanTypes"
             // or another method, then the actual assembly is used, and not the 'Real calling assembly'
             var assembly = Assembly.GetCallingAssembly();
-            var assemblies = assembly.GetReferencedAssemblies().ToList();
-            assemblies.Add(assembly.GetName());
+            var assemblyNames = assembly.GetReferencedAssemblies().ToList();
+            assemblyNames.Add(assembly.GetName());
+            DiscoverBeans(services, assemblyNames, beanOptions);
+        }
+
+        private static void DiscoverBeans(IServiceCollection services, List<AssemblyName> assemblyNames, BeanOptions beanOptions)
+        {
             var beanFinder = new BeanFinder();
-            assemblies.ForEach(assemblyName =>
+            var beanGroup = beanFinder.GetBeanTypes(assemblyNames);
+            beanGroup.InterfaceBeans.ForEach(interfaceBean =>
             {
-                var assembly = Assembly.Load(assemblyName);
-                var types = beanFinder.GetBeanTypes(assembly);
-                types.ToList().ForEach(t => RegisterTypeInServiceCollection(services, t));
+                var beanConfig = beanOptions.FindBeanConfig(interfaceBean.TInterface);
+                var beanData = interfaceBean.FindBean(beanConfig);
+                RegisterTypeInServiceCollection(services, interfaceBean.TInterface, beanData);
             });
         }
 
-        private static void RegisterTypeInServiceCollection(IServiceCollection services, Type type)
+        private static void RegisterTypeInServiceCollection(IServiceCollection services, Type tinterface, BeanData beanData)
         {
-            var interfaces = type.GetInterfaces().ToList();
-            var scopeType = GetScopeType(type);
-            interfaces.ForEach(tinterface =>
+            var result = beanData.Scope switch
             {
-                var result = scopeType switch
-                {
-                    ScopeType.TRANSIENT => services.AddTransient(tinterface, type),
-                    ScopeType.SCOPED => services.AddScoped(tinterface, type),
-                    _ => services.AddSingleton(tinterface, type)
-                };
-            });
-        }
-
-        private static ScopeType GetScopeType(Type type)
-        {
-            // Attribute is already set in class (Method BeanFinder.GetBeanTypes)
-            var bean = type.GetCustomAttribute(typeof(Bean), inherit: true) as Bean;
-            return bean.Scope;
+                ScopeType.TRANSIENT => services.AddTransient(tinterface, beanData.TBean),
+                ScopeType.SCOPED => services.AddScoped(tinterface, beanData.TBean),
+                _ => services.AddSingleton(tinterface, beanData.TBean)
+            };
         }
 
     }

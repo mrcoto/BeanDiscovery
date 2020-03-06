@@ -1,4 +1,5 @@
-﻿using BeanDiscoveryExample.Services;
+﻿using BeanDiscoveryExample.Repositories;
+using BeanDiscoveryExample.Services;
 using BeanDiscoveryExampleExtra;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,14 +11,20 @@ namespace BeanDiscoveryExample.Controllers
     {
         private IMagicService _magicService;
         private IQueryMessage _queryMessage;
+        private ILangRepository _langRepository;
 
-        public MagicController(IMagicService magicService, IQueryMessage queryMessage)
+        public MagicController(
+            IMagicService magicService, 
+            IQueryMessage queryMessage,
+            ILangRepository langRepository
+        )
         {
             _magicService = magicService;
             _queryMessage = queryMessage;
+            _langRepository = langRepository;
         }
 
         [HttpGet]
-        public string Magic() => _magicService.Magic() + " " + _queryMessage.Message();
+        public string Magic() => $"{_magicService.Magic()} {_queryMessage.Message()} [{_langRepository.sayHi()}]";
     }
 }
