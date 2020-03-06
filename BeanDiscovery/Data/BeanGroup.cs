@@ -8,9 +8,12 @@ namespace BeanDiscovery.Data
     {
         public List<BeanCollection> InterfaceBeans { get; }
 
+        public List<BeanData> SingleBeans { get; }
+
         public BeanGroup()
         {
             InterfaceBeans = new List<BeanCollection>();
+            SingleBeans = new List<BeanData>();
         }
 
         public void Add(Type tinterface, Type tbean)
@@ -23,6 +26,8 @@ namespace BeanDiscovery.Data
             }
             beanCollection.AddBean(tbean);
         }
+
+        public void Add(Type tbean) => SingleBeans.Add(new BeanData(tbean));
 
     }
 }

@@ -26,7 +26,11 @@ namespace BeanDiscovery
         {
             tbeans.ForEach(tbean =>
             {
-                tbean.GetInterfaces().ToList().ForEach(tinterface => beanGroup.Add(tinterface, tbean));
+                var interfaces = tbean.GetInterfaces().ToList();
+                if (interfaces.Count > 0)
+                    interfaces.ForEach(tinterface => beanGroup.Add(tinterface, tbean));
+                else
+                    beanGroup.Add(tbean);
             });
         }
 

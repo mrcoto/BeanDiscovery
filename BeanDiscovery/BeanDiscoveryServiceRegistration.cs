@@ -33,6 +33,7 @@ namespace BeanDiscovery
                 var beanData = interfaceBean.FindBean(beanConfig);
                 RegisterTypeInServiceCollection(services, interfaceBean.TInterface, beanData);
             });
+            beanGroup.SingleBeans.ForEach(beanData => RegisterTypeInServiceCollection(services, beanData));
         }
 
         private static void RegisterTypeInServiceCollection(IServiceCollection services, Type tinterface, BeanData beanData)
@@ -42,6 +43,16 @@ namespace BeanDiscovery
                 ScopeType.TRANSIENT => services.AddTransient(tinterface, beanData.TBean),
                 ScopeType.SCOPED => services.AddScoped(tinterface, beanData.TBean),
                 _ => services.AddSingleton(tinterface, beanData.TBean)
+            };
+        }
+
+        private static void RegisterTypeInServiceCollection(IServiceCollection services, BeanData beanData)
+        {
+            var result = beanData.Scope switch
+            {
+                ScopeType.TRANSIENT => services.AddTransient(beanData.TBean),
+                ScopeType.SCOPED => services.AddScoped(beanData.TBean),
+                _ => services.AddSingleton(beanData.TBean)
             };
         }
 
