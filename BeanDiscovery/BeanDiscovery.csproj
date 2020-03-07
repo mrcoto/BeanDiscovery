@@ -14,7 +14,7 @@
 	<Copyright>Copyright José Manuel Espinoza Salas, Chile</Copyright>
 	<Description>Resolve Dependency Injection marking Classes with Bean Attributes</Description>
 	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-	<PackageIconUrl>https://raw.githubusercontent.com/mrcoto/ChileanRut/master/icon.jpg</PackageIconUrl>
+	<PackageIconUrl>https://raw.githubusercontent.com/mrcoto/BeanDiscovery/master/icon.jpg</PackageIconUrl>
 	<PackageIcon>icon.jpg</PackageIcon>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
