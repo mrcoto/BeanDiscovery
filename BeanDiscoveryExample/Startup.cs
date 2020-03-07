@@ -1,6 +1,5 @@
 using MrCoto.BeanDiscovery;
 using MrCoto.BeanDiscoveryExample.Repositories;
-using MrCoto.BeanDiscoveryExample.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
