@@ -17,7 +17,13 @@ namespace BeanDiscovery.Data
             BeanList = new List<BeanData>();
         }
 
-        public void AddBean(Type tbean) => BeanList.Add(new BeanData(tbean));
+        public void AddBean(Type tbean)
+        {
+            var beanData = new BeanData(tbean);
+            if (BeanList.Any(x => x.BeanName == beanData.BeanName))
+                throw new BeanPresentException(TInterface, beanData.BeanName);
+            BeanList.Add(beanData);
+        }
 
         public BeanData FindBean(BeanConfig beanConfig)
         {
