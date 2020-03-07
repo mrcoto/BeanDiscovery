@@ -1,4 +1,5 @@
 ﻿using BeanDiscovery;
+using BeanDiscoveryTest.BeanAttribute.Factory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -6,15 +7,17 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BeanDiscoveryTest
 {
-    public class FakeStartup
+    public class FakeStartupUnknowLang
     {
-        public FakeStartup(IConfiguration configuration) => Configuration = configuration;
-
+        public FakeStartupUnknowLang(IConfiguration configuration) => Configuration = configuration;
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.UseBeanDiscovery();
+            services.UseBeanDiscovery(options =>
+            {
+                options.UseBeanNameWithError<ILangBean>("Unknow");
+            });
             services.BuildServiceProvider();
         }
 
@@ -27,6 +30,5 @@ namespace BeanDiscoveryTest
             app.UseStaticFiles();
 
         }
-
     }
 }
