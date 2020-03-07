@@ -1,7 +1,7 @@
-﻿using BeanDiscoveryTest.BeanAttribute.Factory;
+﻿using MrCoto.BeanDiscoveryTest.BeanAttribute.Factory;
 using Xunit;
 
-namespace BeanDiscoveryTest.BeanAttribute
+namespace MrCoto.BeanDiscoveryTest.BeanAttribute
 {
     public class BeanAttributeSpanishLangTest : IClassFixture<FakeApplicationFactory<FakeStartupSpanishLang>>
     {

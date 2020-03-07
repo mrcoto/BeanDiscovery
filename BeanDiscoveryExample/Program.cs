@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace BeanDiscoveryExample
+namespace MrCoto.BeanDiscoveryExample
 {
     public class Program
     {

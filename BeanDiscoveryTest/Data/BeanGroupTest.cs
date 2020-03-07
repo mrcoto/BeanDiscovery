@@ -1,10 +1,10 @@
-﻿using BeanDiscovery.Config.Data;
-using BeanDiscovery.Data;
-using BeanDiscoveryTest.BeanAttribute.Factory;
+﻿using MrCoto.BeanDiscovery.Config.Data;
+using MrCoto.BeanDiscovery.Data;
+using MrCoto.BeanDiscoveryTest.BeanAttribute.Factory;
 using System.Linq;
 using Xunit;
 
-namespace BeanDiscoveryTest.Data
+namespace MrCoto.BeanDiscoveryTest.Data
 {
     public class BeanGroupTest
     {

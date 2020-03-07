@@ -1,10 +1,10 @@
-﻿using BeanDiscovery.Config.Data;
-using BeanDiscovery.Data;
-using BeanDiscovery.Data.Exceptions;
-using BeanDiscoveryTest.BeanAttribute.Factory;
+﻿using MrCoto.BeanDiscovery.Config.Data;
+using MrCoto.BeanDiscovery.Data;
+using MrCoto.BeanDiscovery.Data.Exceptions;
+using MrCoto.BeanDiscoveryTest.BeanAttribute.Factory;
 using Xunit;
 
-namespace BeanDiscoveryTest.Data
+namespace MrCoto.BeanDiscoveryTest.Data
 {
     public class BeanCollectionTest
     {

@@ -1,9 +1,9 @@
-﻿using BeanDiscovery;
-using BeanDiscovery.Data;
-using BeanDiscoveryTest.BeanAttribute.Factory;
+﻿using MrCoto.BeanDiscovery;
+using MrCoto.BeanDiscovery.Data;
+using MrCoto.BeanDiscoveryTest.BeanAttribute.Factory;
 using Xunit;
 
-namespace BeanDiscoveryTest.Data
+namespace MrCoto.BeanDiscoveryTest.Data
 {
     public class BeanDataTest
     {

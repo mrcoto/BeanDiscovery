@@ -1,7 +1,7 @@
-﻿using BeanDiscovery.Data.Exceptions;
+﻿using MrCoto.BeanDiscovery.Data.Exceptions;
 using System;
 
-namespace BeanDiscovery.Attributes
+namespace MrCoto.BeanDiscovery.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class Bean : Attribute

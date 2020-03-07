@@ -1,12 +1,12 @@
-﻿using BeanDiscovery.Config;
-using BeanDiscovery.Data;
+﻿using MrCoto.BeanDiscovery.Config;
+using MrCoto.BeanDiscovery.Data;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace BeanDiscovery
+namespace MrCoto.BeanDiscovery
 {
     public static class BeanDiscoveryServiceRegistration
     {

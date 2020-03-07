@@ -1,4 +1,4 @@
-﻿namespace BeanDiscovery
+﻿namespace MrCoto.BeanDiscovery
 {
     public enum ScopeType
     {

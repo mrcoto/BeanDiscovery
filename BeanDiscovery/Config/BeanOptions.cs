@@ -1,8 +1,8 @@
-﻿using BeanDiscovery.Config.Data;
+﻿using MrCoto.BeanDiscovery.Config.Data;
 using System;
 using System.Collections.Generic;
 
-namespace BeanDiscovery.Config
+namespace MrCoto.BeanDiscovery.Config
 {
     public class BeanOptions
     {

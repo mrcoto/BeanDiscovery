@@ -1,4 +1,4 @@
-﻿namespace BeanDiscoveryExample.Repositories
+﻿namespace MrCoto.BeanDiscoveryExample.Repositories
 {
     public interface ILangRepository
     {

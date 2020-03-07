@@ -1,5 +1,5 @@
 ﻿
-namespace BeanDiscoveryExampleExtra
+namespace MrCoto.BeanDiscoveryExampleExtra
 {
     public interface IQueryMessage
     {

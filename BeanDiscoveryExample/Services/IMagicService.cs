@@ -1,4 +1,4 @@
-﻿namespace BeanDiscoveryExample.Services
+﻿namespace MrCoto.BeanDiscoveryExample.Services
 {
     public interface IMagicService
     {

@@ -1,10 +1,10 @@
-﻿using BeanDiscoveryExample.Queries;
-using BeanDiscoveryExample.Repositories;
-using BeanDiscoveryExample.Services;
-using BeanDiscoveryExampleExtra;
+﻿using MrCoto.BeanDiscoveryExample.Queries;
+using MrCoto.BeanDiscoveryExample.Repositories;
+using MrCoto.BeanDiscoveryExample.Services;
+using MrCoto.BeanDiscoveryExampleExtra;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BeanDiscoveryExample.Controllers
+namespace MrCoto.BeanDiscoveryExample.Controllers
 {
     [ApiController]
     [Route("api/magic")]

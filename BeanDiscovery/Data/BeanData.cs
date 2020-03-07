@@ -1,8 +1,8 @@
-﻿using BeanDiscovery.Attributes;
+﻿using MrCoto.BeanDiscovery.Attributes;
 using System;
 using System.Reflection;
 
-namespace BeanDiscovery.Data
+namespace MrCoto.BeanDiscovery.Data
 {
     public class BeanData
     {

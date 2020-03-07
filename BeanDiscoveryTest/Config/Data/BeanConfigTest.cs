@@ -1,8 +1,8 @@
-﻿using BeanDiscovery.Config.Data;
-using BeanDiscovery.Data.Exceptions;
+﻿using MrCoto.BeanDiscovery.Config.Data;
+using MrCoto.BeanDiscovery.Data.Exceptions;
 using Xunit;
 
-namespace BeanDiscoveryTest.Config.Data
+namespace MrCoto.BeanDiscoveryTest.Config.Data
 {
     public class BeanConfigTest
     {

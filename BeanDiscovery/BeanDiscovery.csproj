@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <ApplicationIcon />
     <StartupObject />
+    <RootNamespace>MrCoto.BeanDiscovery</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

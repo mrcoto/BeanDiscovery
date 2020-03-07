@@ -1,4 +1,4 @@
-﻿namespace BeanDiscovery.Attributes
+﻿namespace MrCoto.BeanDiscovery.Attributes
 {
     public class Service : Bean
     {

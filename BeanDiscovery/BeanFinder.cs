@@ -1,11 +1,11 @@
-﻿using BeanDiscovery.Attributes;
-using BeanDiscovery.Data;
+﻿using MrCoto.BeanDiscovery.Attributes;
+using MrCoto.BeanDiscovery.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace BeanDiscovery
+namespace MrCoto.BeanDiscovery
 {
     class BeanFinder
     {

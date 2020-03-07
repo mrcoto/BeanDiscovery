@@ -1,6 +1,6 @@
-﻿using BeanDiscovery.Attributes;
+﻿using MrCoto.BeanDiscovery.Attributes;
 
-namespace BeanDiscoveryExampleExtra
+namespace MrCoto.BeanDiscoveryExampleExtra
 {
     [Query]
     public class QueryMessage : IQueryMessage

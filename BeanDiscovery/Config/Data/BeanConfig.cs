@@ -1,6 +1,6 @@
-﻿using BeanDiscovery.Data.Exceptions;
+﻿using MrCoto.BeanDiscovery.Data.Exceptions;
 
-namespace BeanDiscovery.Config.Data
+namespace MrCoto.BeanDiscovery.Config.Data
 {
     public class BeanConfig
     {

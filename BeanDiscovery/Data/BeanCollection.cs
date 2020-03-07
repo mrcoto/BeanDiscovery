@@ -1,10 +1,10 @@
-﻿using BeanDiscovery.Config.Data;
-using BeanDiscovery.Data.Exceptions;
+﻿using MrCoto.BeanDiscovery.Config.Data;
+using MrCoto.BeanDiscovery.Data.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BeanDiscovery.Data
+namespace MrCoto.BeanDiscovery.Data
 {
     public class BeanCollection
     {

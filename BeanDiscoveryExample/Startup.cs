@@ -1,13 +1,13 @@
-using BeanDiscovery;
-using BeanDiscoveryExample.Repositories;
-using BeanDiscoveryExample.Services;
+using MrCoto.BeanDiscovery;
+using MrCoto.BeanDiscoveryExample.Repositories;
+using MrCoto.BeanDiscoveryExample.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace BeanDiscoveryExample
+namespace MrCoto.BeanDiscoveryExample
 {
     public class Startup
     {

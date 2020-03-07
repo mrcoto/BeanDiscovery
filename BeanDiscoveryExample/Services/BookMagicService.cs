@@ -1,7 +1,7 @@
-﻿using BeanDiscovery;
-using BeanDiscovery.Attributes;
+﻿using MrCoto.BeanDiscovery;
+using MrCoto.BeanDiscovery.Attributes;
 
-namespace BeanDiscoveryExample.Services
+namespace MrCoto.BeanDiscoveryExample.Services
 {
     [Service(scope: ScopeType.SINGLETON)]
     public class BookMagicService : IMagicService

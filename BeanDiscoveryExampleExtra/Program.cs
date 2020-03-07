@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BeanDiscoveryExampleExtra
+namespace MrCoto.BeanDiscoveryExampleExtra
 {
     class Program
     {

@@ -1,11 +1,11 @@
-﻿using BeanDiscovery;
-using BeanDiscoveryTest.BeanAttribute.Factory;
+﻿using MrCoto.BeanDiscovery;
+using MrCoto.BeanDiscoveryTest.BeanAttribute.Factory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BeanDiscoveryTest
+namespace MrCoto.BeanDiscoveryTest
 {
     public class FakeStartupUnknowLang
     {

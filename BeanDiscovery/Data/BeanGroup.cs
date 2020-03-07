@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BeanDiscovery.Data
+namespace MrCoto.BeanDiscovery.Data
 {
     public class BeanGroup
     {

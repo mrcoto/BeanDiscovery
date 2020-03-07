@@ -1,6 +1,6 @@
-﻿using BeanDiscovery.Attributes;
+﻿using MrCoto.BeanDiscovery.Attributes;
 
-namespace BeanDiscoveryTest.BeanAttribute.Factory
+namespace MrCoto.BeanDiscoveryTest.BeanAttribute.Factory
 {
     [Bean]
     class SingleBean

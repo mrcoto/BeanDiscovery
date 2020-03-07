@@ -1,8 +1,8 @@
-﻿using BeanDiscovery.Config;
-using BeanDiscoveryTest.BeanAttribute.Factory;
+﻿using MrCoto.BeanDiscovery.Config;
+using MrCoto.BeanDiscoveryTest.BeanAttribute.Factory;
 using Xunit;
 
-namespace BeanDiscoveryTest.Config
+namespace MrCoto.BeanDiscoveryTest.Config
 {
     public class BeanOptionsTest
     {

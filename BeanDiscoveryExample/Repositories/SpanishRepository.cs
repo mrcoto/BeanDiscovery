@@ -1,6 +1,6 @@
-﻿using BeanDiscovery.Attributes;
+﻿using MrCoto.BeanDiscovery.Attributes;
 
-namespace BeanDiscoveryExample.Repositories
+namespace MrCoto.BeanDiscoveryExample.Repositories
 {
     [Repository("Spanish")]
     public class SpanishRepository : ILangRepository

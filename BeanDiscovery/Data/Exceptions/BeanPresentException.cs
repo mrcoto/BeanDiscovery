@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BeanDiscovery.Data.Exceptions
+namespace MrCoto.BeanDiscovery.Data.Exceptions
 {
     public class BeanPresentException : InvalidOperationException
     {

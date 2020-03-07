@@ -1,5 +1,5 @@
 ﻿
-namespace BeanDiscoveryTest.BeanAttribute.Factory
+namespace MrCoto.BeanDiscoveryTest.BeanAttribute.Factory
 {
     interface ILangBean
     {

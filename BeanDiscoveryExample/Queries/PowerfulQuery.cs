@@ -1,7 +1,7 @@
-﻿using BeanDiscovery;
-using BeanDiscovery.Attributes;
+﻿using MrCoto.BeanDiscovery;
+using MrCoto.BeanDiscovery.Attributes;
 
-namespace BeanDiscoveryExample.Queries
+namespace MrCoto.BeanDiscoveryExample.Queries
 {
     [Query(scope: ScopeType.SINGLETON)]
     public class PowerfulQuery

@@ -1,8 +1,8 @@
-﻿using BeanDiscovery.Data.Exceptions;
-using BeanDiscoveryTest.BeanAttribute.Factory;
+﻿using MrCoto.BeanDiscovery.Data.Exceptions;
+using MrCoto.BeanDiscoveryTest.BeanAttribute.Factory;
 using Xunit;
 
-namespace BeanDiscoveryTest.BeanAttribute
+namespace MrCoto.BeanDiscoveryTest.BeanAttribute
 {
     public class BeanAttributeUnknowLangTest : IClassFixture<FakeApplicationFactory<FakeStartupUnknowLang>>
     {

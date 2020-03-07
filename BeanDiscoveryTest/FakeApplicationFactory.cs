@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Hosting;
 
-namespace BeanDiscoveryTest
+namespace MrCoto.BeanDiscoveryTest
 {
     public class FakeApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
     {
