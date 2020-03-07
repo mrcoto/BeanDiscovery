@@ -2,15 +2,34 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
+	<RepositoryType>Library</RepositoryType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <ApplicationIcon />
-    <StartupObject />
-    <RootNamespace>MrCoto.BeanDiscovery</RootNamespace>
+	<RootNamespace>MrCoto.BeanDiscovery</RootNamespace>
+	<PackageId>BeanDiscovery</PackageId>
+    <Version>1.0.0</Version>
+	<AssemblyVersion>1.0.0</AssemblyVersion>
+	<PackageReleaseNotes>V1.0.0</PackageReleaseNotes>
+	<Authors>José Manuel Espinoza Salas</Authors>
+	<PackageProjectUrl>https://github.com/mrcoto/BeanDiscovery</PackageProjectUrl>
+	<Copyright>Copyright José Manuel Espinoza Salas, Chile</Copyright>
+	<Description>Resolve Dependency Injection marking Classes with Bean Attributes</Description>
+	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	<PackageIconUrl>https://raw.githubusercontent.com/mrcoto/ChileanRut/master/icon.jpg</PackageIconUrl>
+	<PackageIcon>icon.jpg</PackageIcon>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.2" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include=".\..\icon.jpg" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
