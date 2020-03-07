@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeanDiscovery.Data.Exceptions;
+using System;
 
 namespace BeanDiscovery.Attributes
 {
@@ -10,6 +11,8 @@ namespace BeanDiscovery.Attributes
 
         public Bean(string name = "Primary", ScopeType scope = ScopeType.TRANSIENT) 
         {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new EmptyBeanNameException();
             Name = name;
             Scope = scope;
         }

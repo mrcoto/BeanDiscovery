@@ -1,4 +1,6 @@
-﻿namespace BeanDiscovery.Config.Data
+﻿using BeanDiscovery.Data.Exceptions;
+
+namespace BeanDiscovery.Config.Data
 {
     public class BeanConfig
     {
@@ -8,6 +10,8 @@
 
         public BeanConfig(string beanName, bool throwIfNotFound = false)
         {
+            if (string.IsNullOrWhiteSpace(beanName))
+                throw new EmptyBeanNameException();
             BeanName = beanName;
             ThrowExceptionIfNotFound = throwIfNotFound;
         }
