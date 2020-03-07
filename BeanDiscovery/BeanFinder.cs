@@ -40,7 +40,7 @@ namespace BeanDiscovery
             return types.Where(t =>
             {
                 return t.GetCustomAttribute(typeof(Bean), inherit: true) != null &&
-                       t.GetTypeInfo().IsClass;
+                       t.IsClass;
             }).ToList();
         }
 
