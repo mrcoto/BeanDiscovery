@@ -2404,7 +2404,7 @@
       },
       "BeanDiscovery/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.2"
         },
