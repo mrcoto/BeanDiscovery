@@ -10,7 +10,7 @@ namespace BeanDiscovery
     class BeanFinder
     {
 
-        public BeanGroup GetBeanTypes(List<AssemblyName> assemblyNames, List<Type> ignoreBeans)
+        public BeanGroup GetBeanTypes(List<AssemblyName> assemblyNames, List<Type> ignoreBeans = null)
         {
             var beanGroup = new BeanGroup();
             assemblyNames.ToList().ForEach(assemblyName =>
