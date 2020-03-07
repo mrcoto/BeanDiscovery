@@ -6,6 +6,7 @@
     <ApplicationIcon />
     <StartupObject />
     <RootNamespace>MrCoto.BeanDiscovery</RootNamespace>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
