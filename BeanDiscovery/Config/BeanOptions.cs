@@ -10,11 +10,18 @@ namespace BeanDiscovery.Config
 
         public Dictionary<Type, BeanConfig> InterfaceNameBag { get; protected set; }
 
+        public List<Type> IgnoredBeanList { get; protected set; }
+
         public BeanOptions()
         {
             GlobalBeanName = new BeanConfig("Primary");
             InterfaceNameBag = new Dictionary<Type, BeanConfig>();
+            IgnoredBeanList = new List<Type>();
         }
+
+        public void IgnoreBean(Type Tbean) => IgnoredBeanList.Add(Tbean);
+
+        public void IgnoreBean<Tbean>() where Tbean : class => IgnoreBean(typeof(Tbean));
 
         public void UseGlobalBeanName(string beanName) => GlobalBeanName = new BeanConfig(beanName);
 

@@ -1,4 +1,5 @@
 ﻿using BeanDiscovery;
+using BeanDiscoveryTest.BeanAttribute.Factory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +15,10 @@ namespace BeanDiscoveryTest
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.UseBeanDiscovery();
+            services.UseBeanDiscovery(options =>
+            {
+                options.IgnoreBean<Spanish2LangBean>();
+            });
             services.BuildServiceProvider();
         }
 

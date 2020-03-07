@@ -26,7 +26,7 @@ namespace BeanDiscovery
         private static void DiscoverBeans(IServiceCollection services, List<AssemblyName> assemblyNames, BeanOptions beanOptions)
         {
             var beanFinder = new BeanFinder();
-            var beanGroup = beanFinder.GetBeanTypes(assemblyNames);
+            var beanGroup = beanFinder.GetBeanTypes(assemblyNames, beanOptions.IgnoredBeanList);
             beanGroup.InterfaceBeans.ForEach(interfaceBean =>
             {
                 var beanConfig = beanOptions.FindBeanConfig(interfaceBean.TInterface);

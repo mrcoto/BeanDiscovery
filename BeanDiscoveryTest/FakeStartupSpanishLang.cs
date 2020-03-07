@@ -16,6 +16,7 @@ namespace BeanDiscoveryTest
         {
             services.UseBeanDiscovery(options =>
             {
+                options.IgnoreBean<Spanish2LangBean>();
                 options.UseBeanName<ILangBean>("Spanish");
             });
             services.BuildServiceProvider();
