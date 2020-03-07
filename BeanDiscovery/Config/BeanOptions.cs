@@ -27,9 +27,14 @@ namespace BeanDiscovery.Config
 
         public void UseGlobalBeanNameWithError(string beanName) => GlobalBeanName = new BeanConfig(beanName, throwIfNotFound: true);
 
-        public void UseBeanName(Type Tinterface, string beanName) => InterfaceNameBag.Add(Tinterface, new BeanConfig(beanName));
+        public void UseBeanName(Type Tinterface, string beanName, bool throwIfNotFound = false)
+        {
+            if (InterfaceNameBag.ContainsKey(Tinterface))
+                InterfaceNameBag.Remove(Tinterface);
+            InterfaceNameBag.Add(Tinterface, new BeanConfig(beanName, throwIfNotFound));
+        }
 
-        public void UseBeanNameWithError(Type Tinterface, string beanName) => InterfaceNameBag.Add(Tinterface, new BeanConfig(beanName, throwIfNotFound: true));
+        public void UseBeanNameWithError(Type Tinterface, string beanName) => UseBeanName(Tinterface, beanName, throwIfNotFound: true);
 
         public void UseBeanName<Tinterface>(string beanName) where Tinterface : class => UseBeanName(typeof(Tinterface), beanName);
         
