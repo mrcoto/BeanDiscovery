@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeanDiscoveryTest", "BeanDi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeanDiscoveryExample", "BeanDiscoveryExample\BeanDiscoveryExample.csproj", "{54A18250-2977-4806-916E-32A896E31D16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeanDiscoveryExampleExtra", "BeanDiscoveryExampleExtra\BeanDiscoveryExampleExtra.csproj", "{05997A1C-3330-4E85-8A13-1AA2CF03E258}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeanDiscoveryExampleExtra", "BeanDiscoveryExampleExtra\BeanDiscoveryExampleExtra.csproj", "{05997A1C-3330-4E85-8A13-1AA2CF03E258}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4293B734-C0C5-4349-BE18-A636F099F72B}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

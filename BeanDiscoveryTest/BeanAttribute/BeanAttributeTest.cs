@@ -44,6 +44,22 @@ namespace MrCoto.BeanDiscoveryTest.BeanAttribute
             Assert.Equal("SingleBean", bean.WhoAmI());
         }
 
+        [Fact]
+        public void Test_Should_Retrieve_BeanGeneric()
+        {
+            var bean = _factory.Services.GetService(typeof(IBeanGeneric<BeanScoped>)) as IBeanGeneric<BeanScoped>;
+            Assert.NotNull(bean);
+            Assert.Equal("BeanGeneric:BeanScoped", bean.WhoAmI());
+        }
+
+        [Fact]
+        public void Test_Should_Retrieve_SingleBeanGeneric()
+        {
+            var bean = _factory.Services.GetService(typeof(SingleBeanGeneric<BeanTransient>)) as SingleBeanGeneric<BeanTransient>;
+            Assert.NotNull(bean);
+            Assert.Equal("SingleBeanGeneric:BeanTransient", bean.WhoAmI());
+        }
+
         [Theory]
         [InlineData(null)]
         [InlineData("")]

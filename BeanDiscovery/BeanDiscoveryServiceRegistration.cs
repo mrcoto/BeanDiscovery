@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using MrCoto.BeanDiscovery.Attributes;
 
 namespace MrCoto.BeanDiscovery
 {
@@ -75,9 +76,11 @@ namespace MrCoto.BeanDiscovery
         /// <param name="beanData">Bean's data</param>
         private static void RegisterTypeInServiceCollection(IServiceCollection services, Type tinterface, BeanData beanData)
         {
-            if (beanData.Scope == ScopeType.TRANSIENT) services.AddTransient(tinterface, beanData.TBean);
-            else if (beanData.Scope == ScopeType.SCOPED) services.AddScoped(tinterface, beanData.TBean);
-            else services.AddSingleton(tinterface, beanData.TBean);
+            Type realInterfaceType = tinterface.IsGenericType ? tinterface.GetGenericTypeDefinition() : tinterface;
+            Type realBeanType = beanData.TBean.IsGenericType ? beanData.TBean.GetGenericTypeDefinition() : beanData.TBean;
+            if (beanData.Scope == ScopeType.TRANSIENT) services.AddTransient(realInterfaceType, realBeanType);
+            else if (beanData.Scope == ScopeType.SCOPED) services.AddScoped(realInterfaceType, realBeanType);
+            else services.AddSingleton(realInterfaceType, realBeanType);
         }
 
         /// <summary>
@@ -87,9 +90,10 @@ namespace MrCoto.BeanDiscovery
         /// <param name="beanData">Bean's data</param>
         private static void RegisterTypeInServiceCollection(IServiceCollection services, BeanData beanData)
         {
-            if (beanData.Scope == ScopeType.TRANSIENT) services.AddTransient(beanData.TBean);
-            else if (beanData.Scope == ScopeType.SCOPED) services.AddScoped(beanData.TBean);
-            else services.AddSingleton(beanData.TBean);
+            Type realBeanType = beanData.TBean.IsGenericType ? beanData.TBean.GetGenericTypeDefinition() : beanData.TBean;
+            if (beanData.Scope == ScopeType.TRANSIENT) services.AddTransient(realBeanType);
+            else if (beanData.Scope == ScopeType.SCOPED) services.AddScoped(realBeanType);
+            else services.AddSingleton(realBeanType);
         }
 
     }
