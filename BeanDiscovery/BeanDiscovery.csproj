@@ -6,9 +6,9 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
 	<RootNamespace>MrCoto.BeanDiscovery</RootNamespace>
 	<PackageId>BeanDiscovery</PackageId>
-    <Version>1.0.0</Version>
-	<AssemblyVersion>1.0.0</AssemblyVersion>
-	<PackageReleaseNotes>V1.0.0</PackageReleaseNotes>
+    <Version>1.0.1</Version>
+	<AssemblyVersion>1.0.1</AssemblyVersion>
+	<PackageReleaseNotes>V1.0.1</PackageReleaseNotes>
 	<Authors>José Manuel Espinoza Salas</Authors>
 	<PackageProjectUrl>https://github.com/mrcoto/BeanDiscovery</PackageProjectUrl>
 	<Copyright>Copyright José Manuel Espinoza Salas, Chile</Copyright>

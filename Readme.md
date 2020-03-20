@@ -1,6 +1,6 @@
 # BeanDiscovery
 
-Resolves dependency injection **at compile time** marking your classes with **bean attributes**.
+Resolve dependency injection **at compile time** marking your classes with **bean attributes**.
 
 Avoid doing this:
 
@@ -23,6 +23,7 @@ public interface IMagicService
     string Magic();
 }
 
+// Default ScopeType is SCOPED
 [Service(scope: ScopeType.SINGLETON)]
 public class MagicService : IMagicService
 {
@@ -38,6 +39,7 @@ public class MagicService : IMagicService
     - [Class With Interface](#class-with-interface)
     - [Class Without Interface](#class-without-interface)
     - [Interface Implemented in two or more classes](#interface-implemented-in-two-or-more-classes)
+    - [Generic Class With Interface](#generic-class-with-interface)
 * [Bean Discovery](#bean-discovery)
     - [Simple Usage](#simple-usage)
     - [Advanced Usage](#advanced-usage)
@@ -51,7 +53,7 @@ Support for .NET Core 2.0 >=
 ## Installation
 
 ```bash
-dotnet add package BeanDiscovery --version 1.0.0
+dotnet add package BeanDiscovery --version 1.0.1
 ```
 
 ## Bean Definition
@@ -112,6 +114,23 @@ namespace MyNamespace
     // This bean is named or identified as "English"
     [Query("English", ScopeType.SCOPED)]
     public class EnglishQuery : ILangQuery
+    {
+        // Some code...
+    }
+}
+```
+
+### Generic Class With Interface
+
+```csharp
+using MrCoto.BeanDiscovery;
+using MrCoto.BeanDiscovery.Attributes;
+
+namespace MyNamespace
+{
+    // Default ScopeType is SCOPED
+    [Repository]
+    public class MyRepository<T> : IRepository<T> where T : class
     {
         // Some code...
     }
