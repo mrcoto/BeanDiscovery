@@ -33,7 +33,7 @@ namespace MrCoto.BeanDiscovery.Attributes
         /// <param name="name">Name or identifier of your bean</param>
         /// <param name="scope">ScopeType of the bean (Transient, Scope or Singleton)</param>
 
-        public Bean(string name = "Primary", ScopeType scope = ScopeType.TRANSIENT) 
+        public Bean(string name = "Primary", ScopeType scope = ScopeType.SCOPED) 
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new EmptyBeanNameException();
