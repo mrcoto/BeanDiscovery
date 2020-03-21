@@ -61,11 +61,19 @@ namespace MrCoto.BeanDiscoveryTest.BeanAttribute
         }
 
         [Fact]
-        public void Test_Should_Retrieve_SunBeanGeneric()
+        public void Test_Should_Retrieve_SubBeanGeneric()
         {
             var bean = _factory.Services.GetService(typeof(ISubBeanGeneric)) as ISubBeanGeneric;
             Assert.NotNull(bean);
             Assert.Equal("BeanGeneric:BeanScoped", bean.WhoAmI());
+        }
+
+        [Fact]
+        public void Test_Should_Retrieve_SubSubBeanGeneric()
+        {
+            var bean = _factory.Services.GetService(typeof(ISubSubBeanGeneric)) as ISubSubBeanGeneric;
+            Assert.NotNull(bean);
+            Assert.Equal("SubSubBeanGeneric", bean.WhoAmI());
         }
 
         [Theory]

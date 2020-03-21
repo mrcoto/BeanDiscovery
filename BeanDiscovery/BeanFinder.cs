@@ -70,7 +70,10 @@ namespace MrCoto.BeanDiscovery
         private List<Type> GetDirectInterfaces(Type tbean)
         {
             var directInterfaces = tbean.GetInterfaces();
-            if (tbean.BaseType != null) directInterfaces = directInterfaces.Except(tbean.BaseType.GetInterfaces()).ToArray();
+            if (tbean.BaseType != null) 
+                directInterfaces = directInterfaces.Except(tbean.BaseType.GetInterfaces()).ToArray();
+            foreach (var tinterface in directInterfaces) 
+                directInterfaces = directInterfaces.Except(tinterface.GetInterfaces()).ToArray();
             return directInterfaces.ToList();
         }
 
