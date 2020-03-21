@@ -40,6 +40,8 @@ public class MagicService : IMagicService
     - [Class Without Interface](#class-without-interface)
     - [Interface Implemented in two or more classes](#interface-implemented-in-two-or-more-classes)
     - [Generic Class With Interface](#generic-class-with-interface)
+    - [Class with Parent Class And Interface](#class-with-parent-class-and-interface)
+    - [Class with Interface Hierarchy](#class-with-interface-hierarchy)
 * [Bean Discovery](#bean-discovery)
     - [Simple Usage](#simple-usage)
     - [Advanced Usage](#advanced-usage)
@@ -131,6 +133,60 @@ namespace MyNamespace
     // Default ScopeType is SCOPED
     [Repository]
     public class MyRepository<T> : IRepository<T> where T : class
+    {
+        // Some code...
+    }
+}
+```
+
+### Class with Parent Class And Interface
+
+```csharp
+using MrCoto.BeanDiscovery;
+using MrCoto.BeanDiscovery.Attributes;
+
+namespace MyNamespace
+{
+    [Repository]
+    public class MyRepository<T> : IRepository<T> where T : class
+    {
+        // Some code...
+    }
+
+    public interface ITodoRepository : IRepository<TodoEntity>
+    {
+        // Some code...
+    }
+
+    [Repository]
+    public class TodoRepository : MyRepository<TodoEntity>, ITodoRepository
+    {
+        // Some code...
+    }
+}
+```
+
+### Class with Interface Hierarchy
+
+```csharp
+using MrCoto.BeanDiscovery;
+using MrCoto.BeanDiscovery.Attributes;
+
+namespace MyNamespace
+{
+
+    public interface ITodoRepository : IRepository<TodoEntity>
+    {
+        // Some code...
+    }
+
+    public interface ICustomTodoRepository : ITodoRepository
+    {
+        // Some code...
+    }
+
+    [Repository]
+    public class CustomTodoRepository : ICustomTodoRepository
     {
         // Some code...
     }
