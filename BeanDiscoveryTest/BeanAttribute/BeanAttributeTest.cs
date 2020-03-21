@@ -60,6 +60,14 @@ namespace MrCoto.BeanDiscoveryTest.BeanAttribute
             Assert.Equal("SingleBeanGeneric:BeanTransient", bean.WhoAmI());
         }
 
+        [Fact]
+        public void Test_Should_Retrieve_SunBeanGeneric()
+        {
+            var bean = _factory.Services.GetService(typeof(ISubBeanGeneric)) as ISubBeanGeneric;
+            Assert.NotNull(bean);
+            Assert.Equal("BeanGeneric:BeanScoped", bean.WhoAmI());
+        }
+
         [Theory]
         [InlineData(null)]
         [InlineData("")]

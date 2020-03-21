@@ -54,12 +54,24 @@ namespace MrCoto.BeanDiscovery
         {
             tbeans.ForEach(tbean =>
             {
-                var interfaces = tbean.GetInterfaces().ToList();
+                var interfaces = GetDirectInterfaces(tbean);
                 if (interfaces.Count > 0)
                     interfaces.ForEach(tinterface => beanGroup.Add(tinterface, tbean));
                 else
                     beanGroup.Add(tbean);
             });
+        }
+
+        /// <summary>
+        /// Get Direct (not Inherited interfaces)
+        /// </summary>
+        /// <param name="tbean">Type of tbean class</param>
+        /// <returns>Direct (not Inherited) interface type list</returns>
+        private List<Type> GetDirectInterfaces(Type tbean)
+        {
+            var directInterfaces = tbean.GetInterfaces();
+            if (tbean.BaseType != null) directInterfaces = directInterfaces.Except(tbean.BaseType.GetInterfaces()).ToArray();
+            return directInterfaces.ToList();
         }
 
     }

@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using MrCoto.BeanDiscovery.Attributes;
 
 namespace MrCoto.BeanDiscovery
 {
@@ -76,8 +75,8 @@ namespace MrCoto.BeanDiscovery
         /// <param name="beanData">Bean's data</param>
         private static void RegisterTypeInServiceCollection(IServiceCollection services, Type tinterface, BeanData beanData)
         {
-            Type realInterfaceType = tinterface.IsGenericType ? tinterface.GetGenericTypeDefinition() : tinterface;
-            Type realBeanType = beanData.TBean.IsGenericType ? beanData.TBean.GetGenericTypeDefinition() : beanData.TBean;
+            Type realInterfaceType = GetRealTypeFromBaseType(tinterface);
+            Type realBeanType = GetRealTypeFromBaseType(beanData.TBean);
             if (beanData.Scope == ScopeType.TRANSIENT) services.AddTransient(realInterfaceType, realBeanType);
             else if (beanData.Scope == ScopeType.SCOPED) services.AddScoped(realInterfaceType, realBeanType);
             else services.AddSingleton(realInterfaceType, realBeanType);
@@ -90,10 +89,22 @@ namespace MrCoto.BeanDiscovery
         /// <param name="beanData">Bean's data</param>
         private static void RegisterTypeInServiceCollection(IServiceCollection services, BeanData beanData)
         {
-            Type realBeanType = beanData.TBean.IsGenericType ? beanData.TBean.GetGenericTypeDefinition() : beanData.TBean;
+            Type realBeanType = GetRealTypeFromBaseType(beanData.TBean);
             if (beanData.Scope == ScopeType.TRANSIENT) services.AddTransient(realBeanType);
             else if (beanData.Scope == ScopeType.SCOPED) services.AddScoped(realBeanType);
             else services.AddSingleton(realBeanType);
+        }
+
+        /// <summary>
+        /// Get real type from a base type,
+        /// Because a generic class/interface has different definition type
+        /// </summary>
+        /// <param name="type">Base Type</param>
+        /// <returns></returns>
+        private static Type GetRealTypeFromBaseType(Type type)
+        {
+            if (type.IsGenericType) return type.GetGenericTypeDefinition();
+            return type;
         }
 
     }
