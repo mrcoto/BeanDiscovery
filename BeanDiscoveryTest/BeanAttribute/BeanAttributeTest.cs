@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.Extensions.DependencyInjection;
 using MrCoto.BeanDiscovery.Attributes;
 using MrCoto.BeanDiscovery.Data.Exceptions;
 using MrCoto.BeanDiscoveryTest.BeanAttribute.Factory;
@@ -18,6 +19,7 @@ namespace MrCoto.BeanDiscoveryTest.BeanAttribute
             var bean = _factory.Services.GetService(typeof(IBeanTransient)) as IBeanTransient;
             Assert.NotNull(bean);
             Assert.Equal("BeanTransient", bean.WhoAmI());
+            Assert.Equal(ServiceLifetime.Transient, ServiceDescriptors.GetServiceLifetime(typeof(IBeanTransient)));
         }
 
         [Fact]
@@ -26,6 +28,7 @@ namespace MrCoto.BeanDiscoveryTest.BeanAttribute
             var bean = _factory.Services.GetService(typeof(IBeanScoped)) as IBeanScoped;
             Assert.NotNull(bean);
             Assert.Equal("BeanScoped", bean.WhoAmI());
+            Assert.Equal(ServiceLifetime.Scoped, ServiceDescriptors.GetServiceLifetime(typeof(IBeanScoped)));
         }
 
         [Fact]
@@ -34,6 +37,7 @@ namespace MrCoto.BeanDiscoveryTest.BeanAttribute
             var bean = _factory.Services.GetService(typeof(IBeanSingleton)) as IBeanSingleton;
             Assert.NotNull(bean);
             Assert.Equal("BeanSingleton", bean.WhoAmI());
+            Assert.Equal(ServiceLifetime.Singleton, ServiceDescriptors.GetServiceLifetime(typeof(IBeanSingleton)));
         }
 
         [Fact]
@@ -42,6 +46,7 @@ namespace MrCoto.BeanDiscoveryTest.BeanAttribute
             var bean = _factory.Services.GetService(typeof(SingleBean)) as SingleBean;
             Assert.NotNull(bean);
             Assert.Equal("SingleBean", bean.WhoAmI());
+            Assert.Equal(ServiceLifetime.Scoped, ServiceDescriptors.GetServiceLifetime(typeof(SingleBean)));
         }
 
         [Fact]
@@ -50,6 +55,7 @@ namespace MrCoto.BeanDiscoveryTest.BeanAttribute
             var bean = _factory.Services.GetService(typeof(IBeanGeneric<BeanScoped>)) as IBeanGeneric<BeanScoped>;
             Assert.NotNull(bean);
             Assert.Equal("BeanGeneric:BeanScoped", bean.WhoAmI());
+            Assert.Equal(ServiceLifetime.Scoped, ServiceDescriptors.GetServiceLifetime(typeof(IBeanGeneric<>)));
         }
 
         [Fact]
@@ -58,6 +64,7 @@ namespace MrCoto.BeanDiscoveryTest.BeanAttribute
             var bean = _factory.Services.GetService(typeof(SingleBeanGeneric<BeanTransient>)) as SingleBeanGeneric<BeanTransient>;
             Assert.NotNull(bean);
             Assert.Equal("SingleBeanGeneric:BeanTransient", bean.WhoAmI());
+            Assert.Equal(ServiceLifetime.Scoped, ServiceDescriptors.GetServiceLifetime(typeof(SingleBeanGeneric<>)));
         }
 
         [Fact]
@@ -66,6 +73,7 @@ namespace MrCoto.BeanDiscoveryTest.BeanAttribute
             var bean = _factory.Services.GetService(typeof(ISubBeanGeneric)) as ISubBeanGeneric;
             Assert.NotNull(bean);
             Assert.Equal("BeanGeneric:BeanScoped", bean.WhoAmI());
+            Assert.Equal(ServiceLifetime.Scoped, ServiceDescriptors.GetServiceLifetime(typeof(ISubBeanGeneric)));
         }
 
         [Fact]
@@ -74,6 +82,7 @@ namespace MrCoto.BeanDiscoveryTest.BeanAttribute
             var bean = _factory.Services.GetService(typeof(ISubSubBeanGeneric)) as ISubSubBeanGeneric;
             Assert.NotNull(bean);
             Assert.Equal("SubSubBeanGeneric", bean.WhoAmI());
+            Assert.Equal(ServiceLifetime.Scoped, ServiceDescriptors.GetServiceLifetime(typeof(ISubSubBeanGeneric)));
         }
 
         [Theory]

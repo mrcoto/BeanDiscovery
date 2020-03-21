@@ -1,4 +1,5 @@
-﻿using MrCoto.BeanDiscoveryTest.BeanAttribute.Factory;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MrCoto.BeanDiscoveryTest.BeanAttribute.Factory;
 using Xunit;
 
 namespace MrCoto.BeanDiscoveryTest.BeanAttribute
@@ -15,6 +16,7 @@ namespace MrCoto.BeanDiscoveryTest.BeanAttribute
             var bean = _factory.Services.GetService(typeof(ILangBean)) as ILangBean;
             Assert.NotNull(bean);
             Assert.Equal("Hola", bean.SayHi());
+            Assert.Equal(ServiceLifetime.Scoped, ServiceDescriptors.GetServiceLifetime(typeof(ILangBean)));
         }
     }
 }

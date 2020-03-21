@@ -20,6 +20,7 @@ namespace MrCoto.BeanDiscoveryTest
                 options.IgnoreBean<Spanish2LangBean>();
             });
             services.BuildServiceProvider();
+            ServiceDescriptors.Generate(services);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
