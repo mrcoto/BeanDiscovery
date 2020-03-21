@@ -53,7 +53,7 @@ Support for .NET Core 2.0 >=
 ## Installation
 
 ```bash
-dotnet add package BeanDiscovery --version 1.0.1
+dotnet add package BeanDiscovery --version 1.0.2
 ```
 
 ## Bean Definition
